@@ -41,3 +41,54 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+
+// Variable to track if we are in Login or Signup mode
+let isLoginMode = true;
+
+function switchTab(mode) {
+    const loginTab = document.getElementById('login-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const nameGroup = document.getElementById('name-group');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (mode === 'login') {
+        isLoginMode = true;
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        nameGroup.style.display = 'none'; // Hide Name field
+        submitBtn.textContent = 'Login';
+    } else {
+        isLoginMode = false;
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        nameGroup.style.display = 'block'; // Show Name field
+        submitBtn.textContent = 'Sign Up';
+    }
+}
+
+// Handle Form Submission
+document.getElementById('authForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop page reload
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    if (email && password) {
+        // Here is where you would normally send data to a backend server.
+        // For now, we simulate success:
+        
+        if (isLoginMode) {
+            console.log("Logging in...");
+            // Redirect to Dashboard
+            window.location.href = "dashboard.html";
+        } else {
+            console.log("Signing up...");
+            alert("Account created successfully!");
+            // Redirect to Dashboard
+            window.location.href = "dashboard.html";
+        }
+    } else {
+        alert("Please fill in all fields.");
+    }
+});

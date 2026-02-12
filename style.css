@@ -813,3 +813,327 @@ body {
 .info-box strong {
     font-weight: 600;
 }
+
+
+/* --- INCLUDE GLOBAL STYLES & SIDEBAR --- */
+/* (For simplicity, I am repeating the core styles so this file works standalone. 
+   In a real project, you would have one main.css file) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #334155;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* --- SIDEBAR STYLES (Copied for consistency) --- */
+.sidebar {
+    width: 280px;
+    background-color: white;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    height: 100%;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: #6366f1;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.logo-text h2 { font-size: 18px; color: #1e293b; line-height: 1.2; }
+.logo-text p { font-size: 12px; color: #64748b; }
+
+.nav-links { list-style: none; flex-grow: 1; }
+.nav-links li { margin-bottom: 10px; }
+.nav-links a {
+    display: flex; align-items: center; gap: 15px;
+    padding: 12px 20px; text-decoration: none;
+    color: #64748b; font-weight: 500; border-radius: 12px;
+    transition: all 0.3s;
+}
+.nav-links a:hover { background-color: #eef2ff; color: #6366f1; }
+.nav-links li.active a { background-color: #e0e7ff; color: #4338ca; font-weight: 600; }
+
+.sidebar-footer { border-top: 1px solid #e2e8f0; padding-top: 20px; }
+.user-profile { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.avatar { width: 40px; height: 40px; background: #7c3aed; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: bold; }
+.user-info h4 { font-size: 14px; color: #1e293b; }
+.user-info p { font-size: 11px; color: #64748b; }
+.logout-btn { text-decoration: none; color: #ef4444; font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 10px; padding-left: 5px; }
+
+
+/* --- TRANSACTIONS PAGE SPECIFIC STYLES --- */
+
+.main-content {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+}
+
+/* Header Section */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.header-title h1 { font-size: 24px; color: #1e293b; }
+.header-title p { color: #64748b; font-size: 14px; margin-top: 5px; }
+
+.add-btn {
+    background-color: #2563eb; /* Blue button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.add-btn:hover { background-color: #1d4ed8; }
+
+/* Filter Bar */
+.filter-bar {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border: 1px solid #e2e8f0;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.search-wrapper i { color: #94a3b8; }
+.search-wrapper input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    color: #334155;
+}
+
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 1px solid #e2e8f0;
+    padding-left: 15px;
+    margin-left: 15px;
+}
+
+.filter-wrapper select {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #475569;
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Transaction List Rows */
+.transaction-list-full {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden; /* Ensures rounded corners on children */
+}
+
+.t-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+}
+
+.t-row:hover { background-color: #f8fafc; }
+.t-row:last-child { border-bottom: none; }
+
+.t-left {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.t-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+/* Icon Colors */
+.green-bg { background: #dcfce7; color: #16a34a; }
+.purple-bg { background: #f3e8ff; color: #9333ea; }
+.orange-bg { background: #ffedd5; color: #ea580c; }
+.blue-bg { background: #dbeafe; color: #2563eb; }
+.yellow-bg { background: #fef9c3; color: #ca8a04; }
+.red-bg { background: #fee2e2; color: #dc2626; }
+
+.t-desc { display: flex; flex-direction: column; gap: 4px; }
+
+.t-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.t-title h4 { font-size: 15px; color: #1e293b; font-weight: 600; }
+
+/* Tags (Expense/Income) */
+.tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: lowercase;
+    font-weight: 500;
+}
+
+.tag.expense { background-color: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.tag.income { background-color: #dcfce7; color: #16a34a; border: 1px solid #bbf7d0; }
+
+.t-subtitle { font-size: 13px; color: #64748b; }
+.t-date { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+.t-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.amount { font-weight: 600; font-size: 15px; }
+.green-text { color: #16a34a; }
+.red-text { color: #dc2626; }
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover { background-color: #fee2e2; }
+
+
+
+/* --- GLOBAL FULL SCREEN RESET --- */
+body {
+    margin: 0;          /* Remove default browser margins */
+    padding: 0;         /* Remove default padding */
+    width: 100vw;       /* Force width to 100% of the viewport */
+    height: 100vh;      /* Force height to 100% of the viewport */
+    overflow: hidden;   /* Stop the whole page from scrolling (only content scrolls) */
+    background-color: #f1f5f9; /* Clean light gray background (No Blue Gradient) */
+    
+    /* VITAL: This overrides the Login page centering logic */
+    display: block !important; 
+}
+
+/* --- MAIN CONTAINER --- */
+.container {
+    display: flex;      /* Keep Sidebar and Content side-by-side */
+    width: 100%;        /* Fill the body width */
+    height: 100%;       /* Fill the body height */
+    max-width: none;    /* Remove any width restrictions */
+    border-radius: 0;   /* Remove rounded corners from the outer wrapper */
+    margin: 0;          /* Remove auto margins */
+    box-shadow: none;   /* Remove any shadows on the outer wrapper */
+}
+
+/* --- SIDEBAR FIXES --- */
+.sidebar {
+    width: 280px;       /* Fixed width */
+    height: 100%;       /* Full height */
+    position: relative; /* Stays in the flow */
+    border-radius: 0;   /* Sidebar should be a rectangle, no curves on left edge */
+}
+
+/* --- MAIN CONTENT FIXES --- */
+.main-content {
+    flex: 1;            /* Take up ALL remaining space */
+    height: 100%;       /* Full height */
+    overflow-y: auto;   /* Scroll INSIDE this area if content is long */
+    padding: 30px;
+}
+
+
+
+
+/* 1. Force the Container to pack items to the left */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* KEY FIX: Removes the gap between sidebar and content */
+    align-items: stretch;        /* Ensures full height */
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 2. Ensure Sidebar is fixed width and stays left */
+.sidebar {
+    width: 280px;        /* Fixed width */
+    flex-shrink: 0;      /* Prevent shrinking */
+    background: white;   /* Ensure it has a background color */
+}
+
+/* 3. Make Main Content fill ALL the remaining empty space */
+.main-content {
+    flex-grow: 1;        /* KEY FIX: Forces this box to expand and fill the blue gap */
+    width: auto;         /* Reset any fixed widths */
+    margin: 0;           /* Remove margins */
+    padding: 30px;       /* Keep inner spacing */
+    overflow-y: auto;    /* Allow scrolling inside this area */
+}

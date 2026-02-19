@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker - Analytics</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<script src="text.js"></script>
+</head>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">💰</div>
+    <div class="logo-text">
+      <div class="brand">Expense<br>Tracker</div>
+      <div class="sub">Personal Finance</div>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="nav-item">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </div>
+    <div class="nav-item">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 7h12M8 12h12M8 17h12M3 7h.01M3 12h.01M3 17h.01"/></svg>
+      Transactions
+    </div>
+    <div class="nav-item active">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      Analytics
+    </div>
+  </nav>
+  <div class="user-section">
+    <div class="user-info">
+      <div class="avatar">E</div>
+      <div class="user-details">
+        <div class="name">Ephraim Mwangi</div>
+        <div class="email">ephraimmur...</div>
+      </div>
+    </div>
+    <div class="logout">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="page-title">Analytics</div>
+  <div class="page-sub">Visualize your spending patterns and trends</div>
+
+  <div class="card">
+    <div class="card-title">Monthly Income vs Expenses</div>
+    <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Category Breakdown</div>
+    <div class="chart-wrap-bar"><canvas id="barChart"></canvas></div>
+  </div>
+
+  <div class="charts-row">
+    <div class="card">
+      <div class="card-title">Expense Distribution</div>
+      <div class="chart-wrap-pie"><canvas id="expensePie"></canvas></div>
+      <div class="pie-legend" id="expenseLegend"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Income Distribution</div>
+      <div class="chart-wrap-pie"><canvas id="incomePie"></canvas></div>
+      <div class="pie-legend" id="incomeLegend"></div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

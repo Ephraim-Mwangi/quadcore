@@ -96,3 +96,139 @@ document.getElementById('authForm').addEventListener('submit', function(e) {
 
 //transactions------
 
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // --- Common Settings ---
+    Chart.defaults.font.family = "'Poppins', sans-serif";
+    Chart.defaults.color = '#64748b';
+    
+    const colorIncome = '#2dd4bf'; // Teal/Green
+    const colorExpense = '#f87171'; // Red/Pink
+
+    // --- 1. Line Chart: Monthly Income vs Expenses ---
+    const ctxLine = document.getElementById('monthlyTrendChart').getContext('2d');
+    new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Income',
+                    data: [5800, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Assuming data drops to 0 after Jan based on video
+                    borderColor: colorIncome,
+                    backgroundColor: colorIncome,
+                    tension: 0.4,
+                    pointRadius: 4
+                },
+                {
+                    label: 'Expenses',
+                    data: [2405, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    borderColor: colorExpense,
+                    backgroundColor: colorExpense,
+                    tension: 0.4,
+                    pointRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, max: 6000 }
+            },
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+
+    // --- 2. Bar Chart: Category Breakdown ---
+    const ctxBar = document.getElementById('categoryBarChart').getContext('2d');
+    new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+            labels: ['Salary', 'Bills & Utilities', 'Freelance', 'Shopping', 'Food & Dining', 'Healthcare', 'Entertainment'],
+            datasets: [
+                {
+                    label: 'Income',
+                    data: [5000, 0, 800, 0, 0, 0, 0],
+                    backgroundColor: colorIncome,
+                    borderRadius: 4
+                },
+                {
+                    label: 'Expenses',
+                    data: [0, 1200, 0, 450, 350, 200, 120],
+                    backgroundColor: colorExpense,
+                    borderRadius: 4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, max: 6000 }
+            },
+            plugins: {
+                legend: { position: 'bottom' }
+            }
+        }
+    });
+
+    // --- 3. Pie Chart: Expense Distribution ---
+    const ctxExpensePie = document.getElementById('expensePieChart').getContext('2d');
+    new Chart(ctxExpensePie, {
+        type: 'pie',
+        data: {
+            labels: ['Bills & Utilities', 'Shopping', 'Food & Dining', 'Healthcare', 'Entertainment', 'Transportation'],
+            datasets: [{
+                data: [50, 19, 15, 8, 5, 4], // Percentages from video
+                backgroundColor: [
+                    '#6366f1', // Indigo (Bills)
+                    '#ec4899', // Pink (Shopping)
+                    '#ef4444', // Red (Food)
+                    '#10b981', // Green (Healthcare)
+                    '#f59e0b', // Yellow (Entertainment)
+                    '#8b5cf6'  // Purple (Transportation)
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12 } }
+            }
+        }
+    });
+
+    // --- 4. Pie Chart: Income Distribution ---
+    const ctxIncomePie = document.getElementById('incomePieChart').getContext('2d');
+    new Chart(ctxIncomePie, {
+        type: 'pie',
+        data: {
+            labels: ['Salary', 'Freelance'],
+            datasets: [{
+                data: [86, 14], // Percentages from video
+                backgroundColor: [
+                    '#10b981', // Green (Salary)
+                    '#3b82f6'  // Blue (Freelance)
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom', labels: { boxWidth: 12 } }
+            }
+        }
+    });
+
+});
+

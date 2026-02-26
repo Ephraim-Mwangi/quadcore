@@ -1372,3 +1372,33 @@ body.login-page-body {
     flex-direction: column;
     align-items: center;
 }
+
+
+
+
+
+/* -------------------------------------
+   Nuclear Fix for Login Page Centering
+---------------------------------------- */
+body.login-page-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; 
+    align-items: center !important;     
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    background-color: #f8fafc !important;
+}
+
+/* This stops any shared containers from ruining the login layout */
+body.login-page-body .container,
+body.login-page-body > div {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: auto !important;
+    height: auto !important;
+    margin: auto !important; /* Forces the block to the dead center */
+}
